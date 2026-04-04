@@ -1,2 +1,2 @@
-# yasb-config-work
+# yasb-config-home
 CONFIG YASB+STYLES
