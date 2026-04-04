@@ -1,2 +1,2 @@
-# yasb-config-home
+# yasb-komorebi-config-home
 CONFIG YASB+STYLES
