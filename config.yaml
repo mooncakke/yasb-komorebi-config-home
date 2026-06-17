@@ -2,6 +2,10 @@ watch_stylesheet: true
 watch_config: true
 debug: false
 update_check: true
+komorebi:
+  start_command: "komorebic start --whkd"      # Comando para iniciar o Komorebi
+  stop_command: "komorebic stop --whkd"        # Comando para parar o Komorebi
+  reload_command: "komorebic reload-configuration"  # Comando para recarregar configuração
 bars:
   primary-bar:
     enabled: true
@@ -23,6 +27,9 @@ bars:
     window_flags:
       always_on_top: false
       windows_app_bar: true
+      hide_on_fullscreen: true
+      hide_on_maximized: false
+      auto_hide: false
     dimensions:
       width: "100%"
       height: 32
@@ -34,16 +41,19 @@ bars:
     widgets:
       left:
       - "home"
-      - "quick_launch"
-      - "launchpad"
-      - "apps"
       - "komorebi_control"
       - "komorebi_workspaces"
       - "komorebi_active_layout"
+      - "quick_launch"
+      - "launchpad"
+      - "apps"
       - "notes"
       - "todo"
       - "pomodoro"
+      # - "power_plan"
+      # - "obs"
       # - "traffic"
+      # - "language"
       center:
       - "clock"
       - "open_meteo"
@@ -51,13 +61,14 @@ bars:
       - "cava"
       right:
       # - "systray"
+      # - "update_check"
       - "bin"
       - "whkd"
       - "disk"
       - "gpu"
       - "cpu"
       - "memory"
-      # - "bluetooth"
+      - "bluetooth"
       - "brightness"
       - "microphone"
       - "volume"
@@ -112,21 +123,48 @@ widgets:
         - keys: "shift+space"
           action: "toggle_quick_launch"
           screen: "primary"
+
   clock:
     type: "yasb.clock.ClockWidget"
     options:
       label: "{%a, %d %b %H:%M:%S}"
       label_alt: "{%A, %d %B %Y %H:%M:%S}"
+      locale: ""
+      update_interval: 1000
       timezones: []
+      icons:
+        clock_01 : "\udb85\udc3f"
+        clock_02 : "\udb85\udc40"
+        clock_03 : "\udb85\udc41"
+        clock_04 : "\udb85\udc42"
+        clock_05 : "\udb85\udc43"
+        clock_06 : "\udb85\udc44"
+        clock_07 : "\udb85\udc45"
+        clock_08 : "\udb85\udc46"
+        clock_09 : "\udb85\udc47"
+        clock_10 : "\udb85\udc48"
+        clock_11 : "\udb85\udc49"
+        clock_12 : "\udb85\udc4a"
+        clock_16 : "SNACK TIME !"
+        clock_21 : "Zzz..."
+        clock_22 : "Zzz..."
+        clock_23 : "Zzz..."
+      alarm_icons:
+        enabled: "\uf0f3"
+        disabled: "\uf0a2"
+        snooze: "\uf1f6"
       calendar: 
         blur: true
         round_corners: true
+        round_corners_type: "normal"
+        border_color: "system"
         alignment: "center"
         direction: "down"
-        extended: false
-        show_years: true
+        offset_top: 6
+        offset_left: 0
         show_holidays: true
         show_week_numbers: true
+        show_years: true
         country_code: "BR"
         holiday_color: "#FF6464"
         extended: true
@@ -169,6 +207,7 @@ widgets:
       update_interval: 600
       hide_decimal: true
       units: "metric"
+      forecast_days: 7
       callbacks:
         on_left: "toggle_card"
         on_middle: "do_nothing"
@@ -665,8 +704,11 @@ widgets:
         border_color: "System"
         alignment: "right"
         direction: "down"
+        brightness_icon: "\ue706"
+        contrast_icon: "\ue7a1"
       callbacks:
-          on_left: "toggle_label"
+          on_left: "toggle_brightness_menu"
+          #on_left: "toggle_label"
       label_shadow:
         enabled: true
         color: "black"
@@ -745,11 +787,11 @@ widgets:
   komorebi_workspaces:
     type: "komorebi.workspaces.WorkspaceWidget"
     options:
-      label_offline: "Komorebi Offline"
-      label_workspace_btn: "\udb81\udc3d"
-      label_workspace_active_btn: "\udb81\udc3e"
-      label_workspace_populated_btn: "\udb81\udc3e"
-      label_default_name: ""
+      label_offline: "\u23fc Offline"
+      label_workspace_btn: "\u000d"
+      label_workspace_active_btn: "\u000d"
+      label_workspace_populated_btn: "\u000d"
+      label_default_name: "{index}"
       label_zero_index: false
       hide_empty_workspaces: false
       hide_if_offline: false
@@ -771,6 +813,7 @@ widgets:
         color: "black"
         radius: 3
         offset: [ 1, 1 ]
+
 
 
   komorebi_active_layout:
@@ -893,7 +936,7 @@ widgets:
   cava:
     type: "yasb.cava.CavaWidget"
     options:
-      bar_height: 15
+      bar_height: 12
       min_bar_height: 0
       gradient: 1
       foreground: "#89b4fa"
@@ -907,3 +950,102 @@ widgets:
       framerate: 60
       hide_empty: true
 
+  obs:
+    type: "yasb.obs.ObsWidget"
+    options:
+      connection:
+        host: "localhost"
+        port: 4455
+        password: "your_password"
+      keybindings:
+      - keys: "ctrl+shift+r"
+        action: "toggle_record"
+      - keys: "ctrl+shift+p"
+        action: "toggle_record_pause"
+      - keys: "ctrl+shift+v"
+        action: "toggle_virtual_cam"
+      - keys: "ctrl+shift+b"
+        action: "toggle_stream"
+      icons:
+        recording: "\ueba7"
+        stopped: "\ueba7"
+        paused: "\ueba7"
+        virtual_cam_on: "\udb81\udda0"
+        virtual_cam_off: "\udb81\udda0"
+        studio_mode_on: "\udb84\uddd8"
+        studio_mode_off: "\udb84\uddd8"
+        streaming: "\udb82\udd02"
+        streaming_stopped: "\udb82\udd02"
+      hide_when_not_recording: false
+      blinking_icon: true
+      show_record_time: true
+      show_virtual_cam: true
+      show_studio_mode: true
+      show_stream: true
+      show_stream_time: true
+      show_scene_name: true
+      show_stream_stats: true
+      tooltip: true
+
+
+  power_plan:
+    type: "yasb.power_plan.PowerPlanWidget"
+    options:
+      label: "<span>\uf0e7</span> {active_plan}"
+      label_alt: "<span>\uf0e7</span> Power Plan {active_plan}"
+      update_interval: 5000
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "system"
+        alignment: "center"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+
+
+  language:
+    type: "yasb.language.LanguageWidget"
+    options:
+      label: "{lang[language_code]}-{lang[country_code]}"
+      label_alt: "{lang[full_name]}"
+      update_interval: 5
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      language_menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "system"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        show_layout_icon: true
+        layout_icon: "\uf11c"
+
+  update_check:
+    type: "yasb.update_check.UpdateCheckWidget"
+    options:
+      windows_update:
+        enabled: true
+        label: "<span>\uf0ab</span> {count}"
+        interval: 1440
+        exclude: []
+      winget_update:
+        enabled: true
+        label: "<span>\uf0ab</span> {count}"
+        interval: 240
+        exclude: ["Microsoft.Edge"]
+      scoop_update:
+        enabled: true
+        label: "<span>\uf0ab</span> {count}"
+        interval: 240
+        exclude: []
