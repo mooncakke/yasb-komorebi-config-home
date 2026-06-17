@@ -1,7 +1,11 @@
 {
-  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.34/schema.json",
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/v0.1.40/schema.json",
   "app_specific_configuration_path": "$Env:USERPROFILE/applications.json",
+  "window_container_behaviour": "Create",
   "window_hiding_behaviour": "Cloak",
+  "unmanaged_window_operation_behaviour": "Op",
+  "mouse_follows_focus": false,
+  "float_override": false,
   "animation": {
     "enabled":true,
     "duration": 250,
@@ -14,7 +18,7 @@
   "default_workspace_padding": 5,
   "default_container_padding": 5,
   "border": false,
-  "border_width": 3,
+  "border_width": 2,
   "border_offset": -1,
   "theme": {
     "palette": "Base16",
@@ -23,39 +27,12 @@
     "bar_accent": "Base0D"
   },
   "stackbar": {
-    "height": 40,
+    "height": 25,
     "mode": "OnStack",
     "tabs": {
       "width": 300
     }
   },
-  "manage_rules": [
-    {
-      "kind": "Exe",
-      "id": "WindowsTerminal.exe",
-      "matching_strategy": "Equals"
-    },
-    {
-      "kind": "Class",
-      "id": "CASCADIA_HOSTING_WINDOW_CLASS",
-      "matching_strategy": "Equals"
-    },
-    {
-    "kind": "Title",
-    "id": "cava",
-    "matching_strategy": "Equals"
-    },
-    {
-    "kind": "Exe",
-    "id": "FilePilot.exe",
-    "matching_strategy": "Equals"
-    },
-    {
-    "kind": "Class",
-    "id": "MozillaWindowClass",
-    "matching_strategy": "Equals"
-  }
-  ],
   "monitors": [
     {
       "workspaces": [
@@ -98,46 +75,6 @@
     {
       "kind": "Exe",
       "matching_strategy": "Equals",
-      "id": "Photoshop.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Equals",
-      "id": "InDesign.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Equals",
-      "id": "Illustrator.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Equals",
-      "id": "Acrobat.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Equals",
-      "id": "CorelDRAW.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Equals",
-      "id": "Figma.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Equals",
-      "id": "ABDownloadManager.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Equals",
-      "id": "FreeTube.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Equals",
       "id": "Discord.exe"
     },
     {
@@ -162,160 +99,6 @@
       "kind": "Title",
       "matching_strategy": "Contains",
       "id": "WHKD Keybinds"
-    },
-    {
-      "kind": "Exe",
-      "id": "MeldStudio.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "Streamlabs OBS.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "obs64.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "brisk.exe"
-    },
-    {
-      "kind": "Title",
-      "matching_strategy": "Contains",
-      "id": "Picture in picture"
-    },
-    {
-      "kind": "Exe",
-      "id": "RobloxPlayerBeta.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "Hayase.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "stremio.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "qbittorrent.exe"
-    },
-    {
-      "kind": "exe",
-      "matching_strategy": "Contains",
-      "id": "hitomi_downloader_GUI.exe"
-    },
-    {
-      "kind": "exe",
-      "matching_strategy": "Contains",
-      "id": "eden.exe"
-    }
-  ],
-  "floating_applications": [
-    {
-      "kind": "Class",
-      "id": "Photoshop"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Contains",
-      "id": "InDesign.exe"
-    },
-    {
-      "kind": "Class",
-      "id": "illustrator"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Contains",
-      "id": "Acrobat.exe"
-    },
-    {
-      "kind": "Class",
-      "matching_strategy": "Contains",
-      "id": "CorelDRAW"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Contains",
-      "id": "Figma.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Contains",
-      "id": "ABDownloadManager.exe"
-    },
-    {
-      "kind": "Exe",
-      "matching_strategy": "Contains",
-      "id": "FreeTube.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "Discord.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "steamwebhelper.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "EpicGamesLauncher.exe"
-    },
-    {
-      "kind": "Title",
-      "id": "Calculadora"
-    },
-    {
-      "kind": "Exe",
-      "id": "WinRAR.exe"
-    },
-    {
-      "kind": "Title",
-      "matching_strategy": "Contains",
-      "id": "WHKD Keybinds"
-    },
-    {
-      "kind": "Exe",
-      "id": "MeldStudio.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "Streamlabs OBS.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "obs64.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "brisk.exe"
-    },
-    {
-      "kind": "Title",
-      "matching_strategy": "Contains",
-      "id": "Picture in picture"
-    },
-    {
-      "kind": "Exe",
-      "id": "RobloxPlayerBeta.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "Hayase.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "stremio.exe"
-    },
-    {
-      "kind": "Exe",
-      "id": "qbittorrent.exe"
-    },
-    {
-      "kind": "exe",
-      "matching_strategy": "Contains",
-      "id": "hitomi_downloader_GUI.exe"
     },
     {
       "kind": "Title",
@@ -323,10 +106,119 @@
       "id": "Picture-in-picture"
     },
     {
-      "kind": "exe",
-      "matching_strategy": "Contains",
+      "kind": "Exe",
+      "id": "qbittorrent.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "Hayase.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "stremio-shell-ng.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "fdm.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "pot.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "obs64.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "Dropshelf.exe"
+    },
+    {
+      "kind": "Exe",
       "id": "eden.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "Ryujinx.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "RobloxPlayerBeta.exe"
+    }
+  ],
+  "floating_applications": [
+    {
+      "kind": "Exe",
+      "matching_strategy": "Equals",
+      "id": "Discord.exe"
+    },
+    {
+      "kind": "Exe",
+      "matching_strategy": "Equals",
+      "id": "steamwebhelper.exe"
+    },
+    {
+      "kind": "Exe",
+      "matching_strategy": "Equals",
+      "id": "EpicGamesLauncher.exe"
+    },
+    {
+      "kind": "Title",
+      "id": "Calculadora"
+    },
+    {
+      "kind": "Exe",
+      "id": "WinRAR.exe"
+    },
+    {
+      "kind": "Title",
+      "matching_strategy": "Contains",
+      "id": "WHKD Keybinds"
+    },
+    {
+      "kind": "Title",
+      "matching_strategy": "Contains",
+      "id": "Picture-in-picture"
+    },
+    {
+      "kind": "Exe",
+      "id": "qbittorrent.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "Hayase.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "stremio-shell-ng.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "fdm.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "pot.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "obs64.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "Dropshelf.exe"
+    },
+    {
+      "kind": "Exe",
+      "id": "eden.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "Ryujinx.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "RobloxPlayerBeta.exe"
     }
   ]
 }
-
