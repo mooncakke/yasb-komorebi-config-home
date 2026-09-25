@@ -50,6 +50,10 @@ bars:
       - "notes"
       - "todo"
       - "pomodoro"
+      # - "active_window"
+      # - "taskbar"
+      # - "battery"
+      # - "wifi"
       # - "power_plan"
       # - "obs"
       # - "traffic"
@@ -57,8 +61,10 @@ bars:
       center:
       - "clock"
       - "open_meteo"
-      - "media"
-      - "cava"
+      # - "cava"
+      - "audio_visualizer"
+      - "media_lite"
+      # - "media"
       right:
       # - "systray"
       # - "update_check"
@@ -69,11 +75,16 @@ bars:
       - "cpu"
       - "memory"
       - "bluetooth"
+      - "dnd"
       - "brightness"
       - "microphone"
       - "volume"
       - "notifications"
       - "vscode"
+      # - "window_controls"
+      - "window_switcher"
+      - "wallpapers"
+      - "control_center"
       - "power_menu"
 widgets:
   home:
@@ -561,12 +572,11 @@ widgets:
       label: "<span>\udb82\ude1e</span>"
       label_alt: "<span>\udb82\ude1e</span> recents"
       menu_title: "<span style='font-weight:bold'>VScode</span> recents"
-      max_field_size: 50
-      folder_icon: "\uf114"
-      file_icon: "\uf016"
+      icons:
+        folder: "\ue8b7"
+        file: "\ue8e5"
+        remote: "\ue8af"
       truncate_to_root_dir: false
-      hide_folder_icon: false
-      hide_file_icon: false
       max_number_of_folders: 30
       max_number_of_files: 30 # set to 0 if you only want folders
       modified_date_format: "Date modified: %Y-%m-%d %H:%M"
@@ -576,7 +586,8 @@ widgets:
         round_corners: true
         round_corners_type: "small"
         alignment: 'center'
-        offset_top: 0
+        offset_top: 6
+        offset_left: 0
 
   media:
     type: "yasb.media.MediaWidget"
@@ -617,6 +628,7 @@ widgets:
         thumbnail_size: 120
         max_title_size: 60
         max_artist_size: 20
+        max_source_size: 16
         show_source: true
         show_volume_slider: true
       media_menu_icons:
@@ -631,7 +643,7 @@ widgets:
         update_interval_ms: 33
         style: "left"  # can be "left", "right", "bounce", "bounce-ease"
         separator: " | "
-        label_padding: 0
+        label_padding: 1
         always_scroll: false
         # Easing curve params: https://www.desmos.com/calculator/j7eamemxzi
         ease_slope: 20
@@ -718,27 +730,69 @@ widgets:
   bluetooth:
     type: "yasb.bluetooth.BluetoothWidget"
     options:
-      label: "<span>{icon}</span> {device_count}"
-      label_alt: "{device_name}"
+      label: "<span>{icon}</span>"
+      label_alt: "<span>{icon}</span>"
+      class_name: ""
       label_no_device: "No devices connected"
       label_device_separator: ", "
-      max_length: 10
+      max_length: null
       max_length_ellipsis: "..."
-      icons: 
-        bluetooth_on: "\udb80\udcaf"
-        bluetooth_off: "\udb80\udcb2"
-        bluetooth_connected: "\udb80\udcb1"
-      device_aliases:
-        - name: "T5.0"
-          alias: "\uf025"
+      tooltip: true
+      icons:
+        bluetooth_on: "\ue702"
+        bluetooth_off: "\ue702"
+        bluetooth_connected: "\ue702"
+      device_aliases: []
+      keybindings: []
       callbacks:
-        on_left: "toggle_label"
-        on_right: "exec cmd.exe /c start ms-settings:bluetooth"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+      menu_config:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        labels:
+          title: "Bluetooth"
+          your_devices: "Your devices"
+          new_devices: "New devices"
+          not_connected: "Not connected"
+          connected: "Connected"
+          more_settings: "More Bluetooth settings"
+          connect: "Connect"
+          disconnect: "Disconnect"
+          connecting: "Connecting"
+          disconnecting: "Disconnecting"
+          pair: "Pair"
+          manage: "Manage"
+          power_on: "On"
+          power_off: "Off"
+        device_icons:
+          headphones: "\ue7f6"
+          headset: "\ue95b"
+          speaker: "\ue7f5"
+          phone: "\ue8ea"
+          tablet: "\ue70a"
+          laptop: "\ue7f8"
+          computer: "\ue950"
+          keyboard: "\ue765"
+          mouse: "\ue962"
+          controller: "\ue7fc"
+          watch: "\ue918"
+          camera: "\ue722"
+          generic: "\ue702"
+          battery:
+            empty: "\ueba0"
+            low: "\ueba2"
+            medium: "\ueba5"
+            high: "\ueba8"
+            full: "\uebaa"
+          scan: "\ue72c"
 
   traffic:
     type: "yasb.traffic.TrafficWidget"
@@ -866,8 +920,11 @@ widgets:
         #- { icon: "\uf422", launch: "search" }
         #- { icon: "\uf0a2", launch: "notification_center" }
         - { icon: "\ueb03", launch: "cmd /c Taskmgr" }
-        - { icon: "\ueb51", launch: "quick_settings" }
+        - { icon: "\uf1de", launch: "quick_settings" }
         - { icon: "\uf489", launch: "wt" }
+        - { icon: "\uf1b6", launch: "C:\\Program Files (x86)\\Steam\\steam.exe" }
+        - { icon: "\uf1bc", launch: "C:\\Users\\Mayara\\AppData\\Roaming\\Spotify\\Spotify.exe" }
+        - { icon: "\uf1ff", launch: "C:\\Users\\Mayara\\Desktop\\Discord.lnk" }
         
   launchpad:
     type: "yasb.launchpad.LaunchpadWidget"
@@ -1049,3 +1106,338 @@ widgets:
         label: "<span>\uf0ab</span> {count}"
         interval: 240
         exclude: []
+
+  control_center:
+    type: "yasb.control_center.ControlCenterWidget"
+    options:
+      label: "<span>\ue713</span>"
+      tooltip: true
+      sections_order:
+        - "system_controls"
+        - "quick_actions"
+        - "sliders"
+        - "power"
+        - "media"
+      popup:
+        alignment: "center"
+        direction: "down"
+        border_color: System
+        round_corners: true
+        round_corners_type: normal
+        offset_top: 8
+      sections:
+        system_controls:
+          profile_image_size: 28
+          power_icon: "\uE7E8"
+          lock_icon: "\uE72E"
+          settings_icon: "\uE713"
+        quick_actions:
+          show: true
+          columns: 3
+          label_position: "default"
+          actions:
+            - id: "toggle_dnd"
+              label: "Do Not Disturb"
+              icon: "\uf285"
+            - id: "toggle_mute"
+              label: "Mute"
+              icon: "\ue74f"
+            - id: "toggle_mic_mute"
+              label: "Mic Mute"
+              icon: "\uF12E"
+            - id: "screenshot"
+              label: "Screenshot"
+              icon: "\ue91b"
+            - id: "touch_keyboard"
+              label: "Keyboard"
+              icon: "\uE765"
+            - id: "toggle_theme"
+              label: "Dark Mode"
+              icon: "\uE708"
+        sliders:
+          show: true
+          brightness:
+            show_slider: true
+            icon: "\uE706"
+            show_source_selector: true
+            source_selector_icon: "\uE972"
+          volume:
+            show_slider: true
+            icon: "\uE767"
+            show_source_selector: true
+            source_selector_icon: "\uE972"
+          microphone:
+            show_slider: true
+            icon: "\uE720"
+            show_source_selector: true
+            source_selector_icon: "\uE972"
+        media:
+          show: true
+          thumbnail_size: 36
+          thumbnail_radius: 4
+          icons:
+            prev_track: "\ue622"
+            next_track: "\ue623"
+            play: "\uf5b0"
+            pause: "\ue62e"
+        power:
+          show: true
+          power_plan_title: "Power Plan"
+          power_mode_title: "Power Mode"
+          button_menu_icon: "\ue76c"
+      callbacks:
+        on_left: "toggle_menu"
+
+  dnd:
+    type: "yasb.dnd.DndWidget"
+    options:
+      label: "{icon}"
+      label_alt: "{icon} {status}"
+      default_active_mode: "priority"
+      callbacks:
+        on_left: "toggle_status"
+        on_right: "cycle_status"
+      icons:
+        disabled: "\uf0f3" # If you are looking for Segoe Fluent Icons, Windows 11 uses \uf285 for all states
+        priority: "\uf186" 
+        alarms: "\uf1f6" 
+
+  media_lite:
+    type: "yasb.media_lite.MediaWidget"
+    options:
+      show_thumbnail: true
+      show_title: true
+      show_artist: true
+      scrolling_label: false
+      image_size: 28
+      thumbnail_corner_radius: 6
+      max_label_size: 20
+      tooltip: true
+      callbacks:
+        on_left: "toggle_media_menu"
+        on_middle: "toggle_play_pause"
+        on_right: "open_media_source"
+      media_menu:
+        blur: true
+        artwork_background: true
+        artwork_blur_radius: 24
+        artwork_dim: 0.55
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "center"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        image_size: 160
+        thumbnail_corner_radius: 12
+        icons:
+          play: "\ue768"
+          pause: "\ue769"
+          prev_track: "\ue892"
+          next_track: "\ue893"
+          shuffle: "\ue8b1"
+          repeat: "\ue8ee"
+          repeat_one: "\ue8ed"
+          volume: "\ue767"
+          mute: "\ue994"
+
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "<span>{wifi_icon}</span>"
+      label_alt: "{wifi_name} {wifi_strength}%"
+      update_interval: 5000
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "exec cmd.exe /c start ms-settings:network"
+        on_right: "toggle_label"
+      ethernet_label: "<span>{wifi_icon}</span>"
+      ethernet_label_alt: "<span>{wifi_icon}</span>{ip_addr}"
+      ethernet_icon: "\ueba9"
+      get_exact_wifi_strength: false  # Optional. Will require location access permission if true.
+      wifi_icons: [
+        "\udb82\udd2e",  # Icon for 0% strength
+        "\udb82\udd1f",  # Icon for 1-24% strength
+        "\udb82\udd22",  # Icon for 25-49% strength
+        "\udb82\udd25",  # Icon for 50-74% strength
+        "\udb82\udd28"   # Icon for 75-100% strength
+      ]
+      menu_config:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        wifi_icons_secured: [
+          "\ue670",
+          "\ue671",
+          "\ue672",
+          "\ue673",
+        ]
+        wifi_icons_unsecured: [
+          "\uec3c",
+          "\uec3d",
+          "\uec3e",
+          "\uec3f",
+        ]
+
+  battery:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "<span>{icon}</span> {percent}%"
+      label_alt: "<span>{icon}</span> {percent}% | {power}W | {time_remaining}"
+      update_interval: 5000
+      time_remaining_natural: False
+      hide_unsupported: True
+      charging_options:
+        icon_format: "{charging_icon}"
+        blink_charging_icon: true
+        blink_interval: 500
+      status_thresholds:
+        critical: 10
+        low: 25
+        medium: 75
+        high: 95
+        full: 100
+      status_icons:
+        icon_charging: "\uf0e7"
+        icon_critical: "\uf244"
+        icon_low: "\uf243"
+        icon_medium: "\uf242"
+        icon_high: "\uf241"
+        icon_full: "\uf240"
+
+  audio_visualizer:
+    type: "yasb.audio_visualizer.AudioVisualizerWidget"
+    options:
+      style: bars
+      height: 16
+      smoothness: 80
+      sensitivity: 50
+      auto_gain: true
+      framerate: 60
+      freq_min: 500
+      freq_max: 12000
+      hide_idle: true
+      hide_idle_after: 2000
+      channels: mono
+      mono_option: average
+      reverse: false
+      mirror: false
+      bars:
+        count: 24
+        width: 2
+        gap: 4
+      waves:
+        width: 80
+      dots:
+        count: 24
+        size: 2
+        gap: 4
+
+  wallpapers:
+    type: "yasb.wallpapers.WallpapersWidget"
+    options:
+      label: "<span>\ue7aa</span>"
+      # Example path to folder with images. Can be a single string or a list of strings.
+      # image_path: "C:\\Users\\{Username}\\Images" 
+      image_path: 
+        - "C:\\Users\\Mayara\\Pictures\\WallpapersS2"
+      change_automatically: false # Automatically change wallpaper
+      update_interval: 60 # If change_automatically is true, update interval in seconds
+      engine:
+        enabled: true
+        animation: "circle" # circle/slide_top/diamond/split
+      gallery:
+        type: "strip" # default/magnified/strip/slide - see "Gallery types" below
+        image_width: 220
+        orientation: "portrait" # landscape/portrait
+        image_corner_radius: 8
+        accent_color: "auto" # the Windows accent, or a hex such as "#89b4fa", currently used for images border
+      keybindings:
+        - keys: "ctrl+alt+w"
+          action: "toggle_gallery"
+          screen: "cursor" # active/cursor/primary
+      # Note: do not use run_after: command if you don't know what it does
+      run_after: # List of commands to run after wallpaper is changed
+        - "wal -s -t -e -q -n -i {image}" # {image} is replaced with the new wallpaper path
+        - "cmd.exe /c start /min pwsh ./yasb.ps1"
+      callbacks:
+        on_left: "toggle_gallery"
+        on_middle: "do_nothing"
+        on_right: "change_wallpaper"
+
+  window_switcher:
+    type: "yasb.window_switcher.WindowSwitcherWidget"
+    options:
+      label: "<span>\uf2d2</span>"
+      icon_size: 48
+      max_visible_apps: 6
+      show_title: true
+      keybindings:
+        - keys: "alt+w"
+          action: "toggle_window_switcher"
+          screen: "cursor"
+
+  window_controls:
+    type: "yasb.window_controls.WindowControlsWidget"
+    options:
+      show_app_name: true
+      app_name_position: "left"
+      maximized_only: false
+      buttons: ["minimize", "maximize", "close"]
+      button_labels:
+        minimize: "\uea71"
+        maximize: "\uea71"
+        restore: "\uea71"
+        close: "\uea71"
+      monitor_exclusive: true
+      animation_duration: 120
+
+  taskbar:
+    type: "yasb.taskbar.TaskbarWidget"
+    options:
+      icon_size: 16
+      tooltip: true
+      show_only_visible: false
+      strict_filtering: true
+      monitor_exclusive: false
+      animation:
+        enabled: true
+        duration: 200
+      preview:
+        enabled: false
+        width: 240
+        delay: 400
+        padding: 8
+        margin: 8
+        blur: false
+        peek: false
+      grouping:
+        enabled: false
+        show_count: true
+      title_label:
+        enabled: false
+        show: "always"
+        min_length: 10
+        max_length: 30
+      ignore_apps:
+        processes: []
+        titles: []
+        classes: []
+
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[title]}"
+      label_alt: "[class_name='{win[class_name]}' exe='{win[process][name]}' hwnd={win[hwnd]}]"
+      label_no_window: ""
+      label_icon: true
+      label_icon_size: 16
+      max_length: 56
+      max_length_ellipsis: "..."
+      monitor_exclusive: true
