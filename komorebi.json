@@ -7,7 +7,7 @@
   "mouse_follows_focus": false,
   "float_override": false,
   "animation": {
-    "enabled":true,
+    "enabled":false,
     "duration": 250,
     "fps": 60,
     "style": "EaseInOutSine"
@@ -144,6 +144,22 @@
     {
       "kind": "exe",
       "id": "RobloxPlayerBeta.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "retroarch.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "Heroic.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "Riot Client.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "alcove.exe"
     }
   ],
   "floating_applications": [
@@ -219,6 +235,22 @@
     {
       "kind": "exe",
       "id": "RobloxPlayerBeta.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "retroarch.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "Heroic.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "Riot Client.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "alcove.exe"
     }
   ]
 }
