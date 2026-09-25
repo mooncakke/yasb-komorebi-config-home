@@ -2117,77 +2117,103 @@
  /* Popup menu*/
 .vscode-menu {}
 .vscode-menu .header {}
+.vscode-menu .header .title {}
+.vscode-menu .header .filter-button {}
+.vscode-menu .header .filter-button.active {}
+.vscode-menu .search-bar {}
+.vscode-menu .search-bar .input {}
 .vscode-menu .contents {}
 .vscode-menu .contents .item {}
 .vscode-menu .contents .item .title {}
 .vscode-menu .contents .item .modified-date {}
 .vscode-menu .contents .item .folder-icon {}
 .vscode-menu .contents .item .file-icon {}
+.vscode-menu .contents .item .remote-icon {}
 .vscode-menu .no-recent {}
 
-.vscode-widget .widget-container .icon {
+.vscode-widget .icon {
     color: #89b4fa;
+    font-family: "Segoe Fluent Icons";
 }
-
 .vscode-menu {
     max-height: 500px;
-    min-width: 300px;
+    background: rgba(32, 32, 32, 0.6);
+    min-width: 360px;
 }
-
 .vscode-menu .header {
+    padding: 12px 16px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 15px;
+    background-color: transparent
+}
+.vscode-menu .header .title {
+    font-size: 16px;
     font-weight: 400;
-    padding: 8px;
-    color: #cdd6f4;
-    background-color: rgba(17, 17, 27, 0.4);
 }
-
-.vscode-menu .contents {
-    background-color: rgba(17, 17, 27, 0.4);
-}
-
-.vscode-menu .contents .item {
-    min-height: 30px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.075);
-}
-
-.vscode-menu .contents .item .title {
+.vscode-menu .header .filter-button {
     font-size: 12px;
-    margin-right: 5px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #acacac;
 }
-
+.vscode-menu .header .filter-button:hover {
+    color: #ffffff;
+}
+.vscode-menu .header .filter-button.active {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+}
+.vscode-menu .search-bar {
+    padding: 6px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: transparent;
+}
+.vscode-menu .search-bar .input {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    color: #ffffff;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+.vscode-menu .search-bar .input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+.vscode-menu .contents {
+    background-color: transparent;
+}
+.vscode-menu .contents .item {
+    min-height: 40px;
+    margin:0px 8px;
+    border-radius: 8px;
+    padding:4px 8px;
+}
+.vscode-menu .contents .item .title {
+    font-size: 13px;
+     font-weight: 600;
+}
 .vscode-menu .contents .item .modified-date {
-    font-size: 11px;
-    margin-right: 5px;
-    color: #797e91;
+    font-size: 12px;
+    font-weight: 600;
+     color: #8f8f8f;
 }
-
-.vscode-menu .contents .item .folder-icon {
+.vscode-menu .contents .item .folder-icon,
+.vscode-menu .contents .item .file-icon,
+.vscode-menu .contents .item .remote-icon {
     font-size: 16px;
-    margin-left: 8px;
-    color: #f2cdcd;
+    color: #ffffff;
+    font-family: "Segoe Fluent Icons";
+    margin-right: 8px;
 }
-
 .vscode-menu .contents .item .file-icon {
-    font-size: 16px;
-    margin-left: 8px;
-    color: #cba6f7;
+    color: #c7c7c7;
 }
-
+.vscode-menu .contents .item .remote-icon {
+    color: #00f549;
+}
 .vscode-menu .contents .item:hover {
-    background-color: #45475a;
-    border-bottom: 1px solid rgba(255, 255, 255, 0);
-}
-.vscode-widget .widget-container .icon {
-    font-size: 14px; /* Ajuste esse valor conforme necessário */
-    min-width: 16px; 
-    min-height: 16px;
-    margin-right: 4px; /* Espaçamento entre o ícone e o texto */
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
 }
 
 .media-widget {}
@@ -2721,12 +2747,192 @@ adjust if you have multiple monitors and want to style them differently correctl
 
 
 .bluetooth-widget {}
-.bluetooth-widget.your_class {} /* If you are using class_name option */
+.bluetooth-widget.your_class {}
 .bluetooth-widget .widget-container {}
 .bluetooth-widget .label {}
 .bluetooth-widget .label.alt {}
 .bluetooth-widget .icon {}
 
+/* State classes are applied to both .icon and .label */
+.bluetooth-widget .icon.bt-off,
+.bluetooth-widget .label.bt-off {}
+.bluetooth-widget .icon.bt-on,
+.bluetooth-widget .label.bt-on {}
+.bluetooth-widget .icon.bt-connected,
+.bluetooth-widget .label.bt-connected {}
+
+.bluetooth-menu {}
+.bluetooth-menu .header {}
+.bluetooth-menu .header .title {}
+.bluetooth-menu .header .power-button {}
+.bluetooth-menu .header .power-button:checked {}
+.bluetooth-menu .header .progress-bar {}
+.bluetooth-menu .error-message {}
+.bluetooth-menu .bluetooth-list {}
+.bluetooth-menu .section {}
+.bluetooth-menu .section-title {}
+.bluetooth-menu .bluetooth-item {}
+.bluetooth-menu .bluetooth-item.active {}
+.bluetooth-menu .bluetooth-item .icon {}
+.bluetooth-menu .bluetooth-item .name {}
+.bluetooth-menu .bluetooth-item .status {}
+.bluetooth-menu .bluetooth-item .battery {}
+.bluetooth-menu .bluetooth-item .battery-icon {}
+.bluetooth-menu .bluetooth-item .battery-icon.empty {}
+.bluetooth-menu .bluetooth-item .battery-icon.low {}
+.bluetooth-menu .bluetooth-item .battery-icon.medium {}
+.bluetooth-menu .bluetooth-item .battery-icon.high {}
+.bluetooth-menu .bluetooth-item .battery-icon.full {}
+.bluetooth-menu .bluetooth-item .controls-container {}
+.bluetooth-menu .bluetooth-item .connect {}
+.bluetooth-menu .footer {}
+.bluetooth-menu .footer .settings-button {}
+.bluetooth-menu .footer .scan-icon {}
+
+.bluetooth-widget .icon.bt-off,
+.bluetooth-widget .label.bt-off {
+    color: #888;
+}
+.bluetooth-widget .icon.bt-on,
+.bluetooth-widget .label.bt-on {
+    color: #4cc2ff;
+}
+.bluetooth-widget .icon.bt-connected,
+.bluetooth-widget .label.bt-connected {
+    color: #00c800;
+}
+.bluetooth-menu {
+    background: rgba(28, 28, 28, 0.6);
+    min-width: 360px;
+    min-height: 480px;
+}
+.bluetooth-menu .header {
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bluetooth-menu .header .title {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+.bluetooth-menu .header .power-button {
+    background-color: rgba(255, 255, 255, 0.12);
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 14px;
+    margin-left: 8px;
+}
+.bluetooth-menu .header .power-button:checked {
+    background-color: #4cc2ff;
+    color: #000;
+}
+.bluetooth-menu .progress-bar {
+    min-height: 2px;
+    max-height: 2px;
+    color: #4cc2ff;
+}
+.bluetooth-menu .bluetooth-list {
+    background-color: transparent;
+}
+.bluetooth-menu .section {
+    background-color: transparent
+}
+.bluetooth-menu .section-title {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 12px 4px;
+    color: rgba(255, 255, 255, 0.6);
+}
+.bluetooth-menu .error-message {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 0;
+    background-color: #92242d;
+    color: #e7bfc2;
+}
+.bluetooth-menu .bluetooth-item {
+    min-height: 44px;
+    padding: 6px 12px;
+    margin: 2px 4px;
+    border-radius: 6px;
+}
+.bluetooth-menu .bluetooth-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.bluetooth-menu .bluetooth-item.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+}
+.bluetooth-menu .bluetooth-item .icon {
+    font-family: 'Segoe Fluent Icons';
+    font-size: 18px;
+    margin-right: 12px;
+    min-width: 28px;
+    font-weight: 400;
+}
+.bluetooth-menu .bluetooth-item .name {
+    font-size: 14px;
+    font-weight: 600;
+}
+.bluetooth-menu .bluetooth-item .status {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 600;
+}
+.bluetooth-menu .bluetooth-item .battery {
+    font-size: 13px;
+    font-weight: 600;
+    padding-right: 6px;
+}
+.bluetooth-menu .bluetooth-item .battery-icon {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: 'Segoe Fluent Icons';
+}
+.bluetooth-menu .bluetooth-item .controls-container {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+.bluetooth-menu .bluetooth-item .connect {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 4px 12px;
+    border-radius: 4px;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+}
+.bluetooth-menu .bluetooth-item .connect:hover {
+    background-color: rgba(255, 255, 255, 0.22);
+}
+.bluetooth-menu .footer {
+    padding: 8px 12px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bluetooth-menu .footer .settings-button {
+    background-color: transparent;
+    border: none;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.bluetooth-menu .footer .scan-icon {
+    font-family: 'Segoe Fluent Icons';
+    background-color: transparent;
+    border: none;
+    font-weight: 400;
+    min-width: 28px;
+    min-height: 28px;
+    color: #fff;
+    border-radius: 4px;
+}
+.bluetooth-menu .footer .scan-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
 
 /* Main widget styling */
 .traffic-widget { }
@@ -3377,6 +3583,7 @@ adjust if you have multiple monitors and want to style them differently correctl
     margin: 0;
     margin-top: 8px;
     margin-left: 10px;
+    margin-right: 12px; /* Espaçamento entre o Cava e o Media */
 }
 .cava-widget .widget-container {}
 
@@ -3681,3 +3888,1057 @@ adjust if you have multiple monitors and want to style them differently correctl
     height: 14px;              /* Casando com a altura do ícone */
     line-height: 14px;         /* Força o número a ficar centralizado sem cortar a base */
 }
+
+
+/* Bar widget */
+.control-center-widget {}
+.control-center-widget .widget-container {}
+.control-center-widget .icon {}
+.control-center-widget .label {}
+
+/* Popup window */
+.control-center-menu {}
+
+/* System controls profile image, settings and power buttons */
+.control-center-menu .section.system-controls {}
+.control-center-menu .section.system-controls .button {}
+.control-center-menu .section.system-controls .button.profile-image {}
+.control-center-menu .section.system-controls .button.settings {}
+.control-center-menu .section.system-controls .button.power {}
+
+/* Quick actions grid */
+.control-center-menu .section.quick-actions {}
+.control-center-menu .section.quick-actions .button {}
+.control-center-menu .section.quick-actions .button.active {}
+.control-center-menu .section.quick-actions .button .icon {}
+.control-center-menu .section.quick-actions .button .title {}
+
+/* Sliders brightness, volume, microphone */
+.control-center-menu .section.sliders {}
+.control-center-menu .section.sliders .slider {}
+.control-center-menu .section.sliders .slider.brightness {}
+.control-center-menu .section.sliders .slider.volume {}
+.control-center-menu .section.sliders .slider.microphone {}
+.control-center-menu .section.sliders .slider .icon {}
+.control-center-menu .section.sliders .slider .slider-control {}
+.control-center-menu .section.sliders .slider .value {}
+.control-center-menu .section.sliders .slider .source-selector {}
+
+/* Power plan and mode selectors */
+.control-center-menu .section.power {}
+.control-center-menu .section.power .button.plan-name {}
+.control-center-menu .section.power .button.mode-name {}
+.control-center-menu .section.power .button .title {}
+.control-center-menu .section.power .button .subtext {}
+.control-center-menu .section.power .button .icon {}
+
+/* Media */
+.control-center-menu .section.media {}
+.control-center-menu .section.media .thumbnail {}
+.control-center-menu .section.media .track-info {}
+.control-center-menu .section.media .title {}
+.control-center-menu .section.media .subtext {}
+.control-center-menu .section.media .controls {}
+.control-center-menu .section.media .button {}
+.control-center-menu .section.media .button.prev {}
+.control-center-menu .section.media .button.play {}
+.control-center-menu .section.media .button.next {}
+.control-center-menu .section.media .button.disabled {}
+
+/* POPUP WINDOW */
+.control-center-menu {
+    background: rgba(32, 32, 32, 0.6);
+    min-width: 360px;
+}
+
+/* SECTIONS */
+/* Left and right padding of 12 px + 4 px margin for quick action and power plan, 
+which is 16 pixels same as the other sections. */
+.control-center-menu .section {
+    background: rgba(255, 255, 255, 0);
+    margin: 0;
+    padding: 16px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* We dont want a padding at the bottom of the first section. */
+.control-center-menu .section.system-controls {
+    padding: 12px 16px 0 16px;
+}
+.control-center-menu .section.sliders {
+    padding: 16px;
+}
+.control-center-menu .section.media,
+.control-center-menu .section.power,
+.control-center-menu .section.system-controls {
+    border-bottom: 1px solid rgba(255, 255, 255, 0);
+}
+
+/* SHARED SEGOE FLUENT ICONS */
+.control-center-menu .section.system-controls .button,
+.control-center-menu .section.quick-actions .button .icon,
+.control-center-menu .section.sliders .slider .icon,
+.control-center-menu .section.sliders .slider .source-selector,
+.control-center-menu .section.power .plan-name .icon,
+.control-center-menu .section.power .mode-name .icon,
+.control-center-menu .section.media .button {
+    font-family: "Segoe Fluent Icons";
+    font-weight: 400;
+}
+
+/* SHARED HOVER & TRANSITION TRANSITIONS */
+.control-center-menu .section.quick-actions .button .icon,
+.control-center-menu .section.system-controls .button,
+.control-center-menu .section.sliders .slider .source-selector,
+.control-center-menu .section.power .plan-name,
+.control-center-menu .section.power .mode-name,
+.control-center-menu .section.media .button {
+    transition: background-color 0.08s, opacity 0.08s;
+    opacity: 1;
+}
+
+/* SHARED CLICKED / PRESSED STATES */
+.control-center-menu .section.system-controls .button:clicked,
+.control-center-menu .section.system-controls .button:pressed,
+.control-center-menu .section.quick-actions .button .icon:clicked,
+.control-center-menu .section.quick-actions .button .icon:pressed,
+.control-center-menu .section.sliders .slider .source-selector:clicked,
+.control-center-menu .section.sliders .slider .source-selector:pressed,
+.control-center-menu .section.power .plan-name:clicked,
+.control-center-menu .section.power .plan-name:pressed,
+.control-center-menu .section.power .mode-name:clicked,
+.control-center-menu .section.power .mode-name:pressed,
+.control-center-menu .section.media .button:clicked,
+.control-center-menu .section.media .button:pressed {
+    opacity: 0.5;
+}
+
+/* SHARED DISABLED STATES */
+.control-center-menu .section.quick-actions .button.disabled .title,
+.control-center-menu .section.quick-actions .button.disabled .icon,
+.control-center-menu .section.sliders .slider.disabled,
+.control-center-menu .section.media .button.disabled,
+.control-center-menu .section.media .button.disabled:hover {
+    opacity: 0.5;
+}
+
+/* SYSTEM CONTROLS */
+.control-center-menu .section.system-controls .button {
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    min-height: 32px;
+    max-height: 32px;
+    min-width: 32px;
+    max-width: 32px;
+    font-size: 14px;
+    color: rgb(255, 255, 255);
+    transition: background-color 0.08s, opacity 0.08s;
+}
+.control-center-menu .section.system-controls .button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* QUICK ACTIONS */
+.control-center-menu .section.quick-actions .button {
+    margin: 0 4px;
+    cursor: pointer;
+}
+.control-center-menu .section.quick-actions .button .icon {
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-height: 48px;
+    border-radius: 6px;
+    color: rgb(255, 255, 255); 
+}
+.control-center-menu .section.quick-actions .button .icon:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.control-center-menu .section.quick-actions .button.active .icon {
+    background-color: #47AFF5;
+    border: 1px solid #47AFF5;
+    color: #000;
+}
+.control-center-menu .section.quick-actions .button.active .icon:hover {
+    background-color: #42a0df;
+    border: 1px solid #42a0df;
+    color: #000;
+}
+.control-center-menu .section.quick-actions .button.disabled .icon:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.control-center-menu .section.quick-actions .button.active .icon:pressed {
+    background-color: #3795d3;
+    border: 1px solid #3795d3;
+}
+.control-center-menu .section.quick-actions .button .title {
+    font-size: 12px;
+    margin: 4px 0 8px 0;
+    padding: 0;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+}
+
+/* SLIDERS */
+.control-center-menu .section.sliders .slider {
+    background: transparent;
+    border: none;
+    min-height: 34px;
+    margin: 0 4px 0 4px;
+}
+.control-center-menu .section.sliders .slider .icon {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    min-width: 36px;
+}
+.control-center-menu .section.sliders .slider .value {
+    min-width: 36px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+}
+.control-center-menu .section.sliders .slider .source-selector {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0);
+    margin-left: 4px;
+}
+.control-center-menu .section.sliders .slider .source-selector:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* POWER PLAN & POWER MODE */
+.control-center-menu .section.power .plan-name,
+.control-center-menu .section.power .mode-name {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    min-height: 36px;
+    margin: 0 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+}
+.control-center-menu .section.power .plan-name:hover,
+.control-center-menu .section.power .mode-name:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+.control-center-menu .section.power .mode-name.disabled,
+.control-center-menu .section.power .mode-name.disabled:hover {
+    opacity: 0.5;
+    background: rgba(255, 255, 255, 0.06);
+}
+.control-center-menu .section.power .plan-name .title,
+.control-center-menu .section.power .mode-name .title {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+}
+.control-center-menu .section.power .plan-name .subtext,
+.control-center-menu .section.power .mode-name .subtext {
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+}
+.control-center-menu .section.power .plan-name .icon,
+.control-center-menu .section.power .mode-name .icon {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+}
+
+/* MEDIA CONTROLS */
+.control-center-menu .section.media {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.control-center-menu .section.media .track-info {
+     padding-left: 8px;
+}
+.control-center-menu .section.media .title {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgb(255, 255, 255);
+}
+.control-center-menu .section.media .subtext {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+}
+.control-center-menu .section.media .button {
+    font-size: 14px;
+    background-color: rgba(255, 255, 255, 0);
+    min-width: 32px;
+    min-height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    border-radius: 6px;
+    margin: 0 0 0 4px;
+}
+.control-center-menu .section.media .button:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+.control-center-menu .section.media .button.disabled,
+.control-center-menu .section.media .button.disabled:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+/* Context menu styles for dropdowns and menus inside the Control Center panel */
+.control-center-menu .context-menu {
+    background-color: rgba(48, 48, 48, 0.86);
+    padding: 4px 0px;
+    font-family: "Segoe UI Variable", "Segoe UI";
+    font-weight: 600;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.9);
+}
+.control-center-menu .context-menu::item {
+    background-color: transparent;
+    padding: 6px 12px;
+    margin: 2px 6px;
+    border-radius: 4px;
+    min-width: 100px;
+}
+.control-center-menu .context-menu::item:selected  {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #FFFFFF;
+}
+.control-center-menu .context-menu::separator {
+    height: 1px;
+    background-color: rgb(68, 68, 68);
+    margin: 4px 0;
+}
+.control-center-menu .context-menu::indicator:unchecked {
+    width: 4px;
+    height: 12px;
+    margin-left: 0;
+    color: transparent;
+    background-color: transparent;
+}
+.control-center-menu .context-menu::indicator:checked {
+    width: 4px;
+    height: 12px;
+    background-color: #47AFF5;
+    border-radius: 2px;
+    margin-left: 0;
+}
+
+.dnd-widget {}
+.dnd-widget .widget-container {}
+.dnd-widget .widget-container .label {}
+.dnd-widget .widget-container .label.alt {}
+.dnd-widget .widget-container .icon {}
+/* Status classes */
+.dnd-widget .widget-container .label.status-disabled {}
+.dnd-widget .widget-container .label.status-priority {}
+.dnd-widget .widget-container .label.status-alarms {}
+.dnd-widget .widget-container .icon.status-disabled {}
+.dnd-widget .widget-container .icon.status-priority {}
+.dnd-widget .widget-container .icon.status-alarms {}
+
+.dnd-widget {
+    padding: 0 8px;
+}
+
+.dnd-widget .icon {
+    font-size: 14px;
+    margin-right: 6px;
+}
+
+.dnd-widget .label {
+    font-size: 13px;
+    color: #e0e0e0;
+}
+
+/* Disabled - Green */
+.dnd-widget .icon.status-disabled {
+    color: #a6e3a1; 
+}
+.dnd-widget .label.status-disabled {
+    color: #a6e3a1; 
+}
+
+/* Priority Only - Yellow */
+.dnd-widget .icon.status-priority {
+    color: #f9e2af; 
+}
+.dnd-widget .label.status-priority {
+    color: #f9e2af; 
+}
+
+/* Alarms Only - Red */
+.dnd-widget .icon.status-alarms {
+    color: #f38ba8; 
+}
+.dnd-widget .label.status-alarms {
+    color: #f38ba8; 
+}
+
+.media-lite-widget {}
+.media-lite-widget .widget-container {}
+.media-lite-widget .thumbnail {}
+.media-lite-widget .text {}
+.media-lite-widget .label {}
+.media-lite-widget .title {}
+.media-lite-widget .artist {}
+
+.media-lite-menu {}
+.media-lite-menu .header {}
+.media-lite-menu .artwork-background {}
+.media-lite-menu .thumbnail {}
+.media-lite-menu .controls {}
+.media-lite-menu .title {}
+.media-lite-menu .artist {}
+.media-lite-menu .source {}
+.media-lite-menu .volume-hover {}
+.media-lite-menu .volume-button {}
+.media-lite-menu .volume-button.muted {}
+.media-lite-menu .volume-button.unavailable {}
+.media-lite-menu .volume-slider-popup {}
+.media-lite-menu .volume-slider {}
+.media-lite-menu .volume-slider::groove {}
+.media-lite-menu .volume-slider::sub-page {}
+.media-lite-menu .volume-slider::add-page {}
+.media-lite-menu .btn {}
+.media-lite-menu .btn.play {}
+.media-lite-menu .btn.prev {}
+.media-lite-menu .btn.next {}
+.media-lite-menu .btn.shuffle {}
+.media-lite-menu .btn.repeat {}
+.media-lite-menu .btn.active {}   /* shuffle and repeat e.g .btn.repeat.active */
+.media-lite-menu .btn.disabled {}
+.media-lite-menu .media-timeline-container {}
+.media-lite-menu .playback-time {}
+.media-lite-menu .playback-time.current {}
+.media-lite-menu .playback-time.total {}
+.media-lite-menu .progress-slider {}
+.media-lite-menu .progress-slider::groove {}
+.media-lite-menu .progress-slider::sub-page {}
+
+/* Bar */
+.media-lite-widget {
+    padding: 0;
+    margin: 0;
+}
+.media-lite-widget .text {
+    padding: 0;
+}
+.media-lite-widget .label {
+    font-size: 12px;
+    font-family: "Segoe UI";
+    padding: 0 2px;
+}
+.media-lite-widget .title {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: "Segoe UI";
+    padding: 0 2px;
+}
+.media-lite-widget .artist {
+    font-size: 11px;
+    color: #7f849c;
+    font-family: "Segoe UI";
+    padding: 0 2px;
+}
+
+/* Popup */
+.media-lite-menu {
+    min-width: 280px;
+    max-width: 280px;
+    background-color: rgba(32, 32, 32, 0.6);
+} 
+.media-lite-menu .header {
+    padding: 16px 16px 0 16px;
+}
+.media-lite-menu .thumbnail {
+    cursor: pointer;
+}
+.media-lite-menu .controls {
+    padding: 32px 16px 32px 16px;
+}
+.media-lite-menu .title {
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Segoe UI";
+}
+.media-lite-menu .artist {
+    font-size: 12px;
+    font-weight: 600;
+    color: #a6adc8;
+    font-family: "Segoe UI";
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+.media-lite-menu .source {
+    min-width: 16px;
+    min-height: 16px;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+.media-lite-menu .volume-button {
+    font-family: "Segoe Fluent Icons";
+    font-size: 16px;
+    min-width: 24px;
+    min-height: 24px;
+    color: #cdd6f4;
+}
+.media-lite-menu .volume-button.muted {
+    color: #a0a0a0;
+}
+.media-lite-menu .volume-button.unavailable {
+    color: #4e525c;
+}
+.media-lite-menu .volume-slider-popup {
+    background-color: rgb(32, 32, 32);
+    border: 1px solid rgb(54, 54, 54);
+    border-radius: 10px;
+    padding: 12px 8px;
+}
+.media-lite-menu .volume-slider {
+    min-height: 120px;
+    max-height: 120px;
+}
+.media-lite-menu .volume-slider::groove {
+    background: rgba(255, 255, 255, 0.1);
+    width: 3px;
+    border-radius: 2px;
+}
+.media-lite-menu .volume-slider::sub-page {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+.media-lite-menu .volume-slider::add-page {
+    background: white;
+    border-radius: 2px;
+}
+.media-lite-menu .btn {
+    font-family: "Segoe Fluent Icons";
+    font-size: 14px;
+    font-weight: 400;
+    margin: 4px 2px;
+    min-width: 40px;
+    max-width: 40px;
+    min-height: 40px;
+    max-height: 40px;
+    border-radius: 20px;
+    transition: background-color 0.08s, opacity 0.08s;
+    opacity: 1;
+    cursor: pointer;
+}
+.media-lite-menu .btn:clicked,
+.media-lite-menu .btn:pressed {
+    opacity: 0.5;
+}
+.media-lite-menu .btn:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+.media-lite-menu .btn.play {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: 20px;
+}
+.media-lite-menu .btn.play {
+    background-color:  #ffffff;
+    color: #000;
+}
+.media-lite-menu .btn.shuffle.active,
+.media-lite-menu .btn.repeat.active{
+    color: #05ec4a;
+} 
+.media-lite-menu .btn.disabled:hover,
+.media-lite-menu .btn.disabled {
+    color: #999;
+    background-color: rgba(0, 0, 0, 0);
+    opacity: 1;
+    cursor:default;
+}
+.media-lite-menu .playback-time {
+    font-size: 11px;
+    font-family: "Segoe UI";
+    color: #7f849c;
+}
+.media-lite-menu .progress-slider {
+    height: 10px;
+    margin: 2px 0;
+    border-radius: 3px;
+}
+.media-lite-menu .progress-slider::groove {
+    background: rgba(255, 255, 255, 0.1);
+    height: 2px;
+    border-radius: 3px;
+}
+.media-lite-menu .progress-slider::groove:hover {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+}
+.media-lite-menu .progress-slider::sub-page {
+    background: white;
+    border-radius: 3px;
+}
+
+.wifi-widget {}
+.wifi-widget.your_class {} /* If you are using class_name option */
+.wifi-widget .widget-container {}
+.wifi-widget .widget-container .label {}
+.wifi-widget .widget-container .label.alt {}
+.wifi-widget .widget-container .icon {}
+
+.wifi-menu {}
+.wifi-menu .progress-bar {}
+.wifi-menu .header {}
+.wifi-menu .error-message {}
+.wifi-menu .wifi-list {}
+.wifi-menu .wifi-item {}
+.wifi-menu .wifi-item[active=true] {}
+.wifi-menu .wifi-item .icon {}
+.wifi-menu .wifi-item .name {}
+.wifi-menu .wifi-item .password {}
+.wifi-menu .wifi-item .status {}
+.wifi-menu .wifi-item .strength {}
+.wifi-menu .wifi-item .controls-container {}
+.wifi-menu .wifi-item .connect {}
+.wifi-menu .footer {}
+.wifi-menu .footer .settings-button {}
+.wifi-menu .footer .refresh-icon {}
+
+/* Right click menu style */
+.context-menu {}
+.context-menu .menu-checkbox {}
+.context-menu .menu-checkbox .checkbox {}
+.context-menu::item {}
+
+.wifi-menu {
+    font-family: 'Segoe UI';
+    background-color: rgba(17, 17, 27, 0.4);
+    max-height: 350px;
+    min-height: 375px;
+    min-width: 375px;
+}
+
+.wifi-menu .progress-bar {
+    max-height: 2px;
+    color: #4cc2ff;
+}
+
+.wifi-menu .header {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    padding: 12px;
+    background-color: rgba(17, 17, 27, 0.6);
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wifi-menu .error-message {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 2px;
+    padding: 12px;
+    background-color: red;
+    color: white;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wifi-menu .wifi-list {
+    background-color: rgba(17, 17, 27, 0.8);
+    margin-right: 3px;
+}
+
+.wifi-menu .wifi-item {
+    min-height: 35px;
+    padding: 2px 12px;
+    margin: 2px 4px;
+}
+
+.wifi-menu .wifi-item:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.wifi-menu .wifi-item[active=true] {
+    background-color: rgba(255, 255, 255, 0.15);
+    font-size: 14px;
+    border-radius: 6px;
+    min-height: 80px;
+}
+
+.wifi-menu .wifi-item .icon {
+    font-family: 'Segoe Fluent Icons';
+    font-size: 26px;
+    margin-right: 10px;
+}
+
+.wifi-menu .wifi-item .name {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.wifi-menu .wifi-item .password {
+    font-family: 'Segoe UI';
+    background-color: transparent;
+    font-size: 14px;
+}
+
+.wifi-menu .wifi-item .status {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+}
+
+.wifi-menu .wifi-item .strength {
+    font-family: 'Segoe UI';
+    font-size: 14px;
+}
+
+.wifi-menu .wifi-item .controls-container {
+    padding-top: 8px;
+}
+
+.wifi-menu .wifi-item .connect {
+    background-color: rgba(255, 255, 255, 0.15);
+    padding: 4px 30px;
+    border-radius: 4px;
+    border: none;
+    font-size: 14px;
+}
+
+.wifi-menu .wifi-item .connect:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.wifi-menu .wifi-item .connect:pressed {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.wifi-menu .footer {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12px;
+    margin-top: 2px;
+    color: #9399b2;
+    background-color: rgba(17, 17, 27, 0.6);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wifi-menu .footer .settings-button {
+    font-family: 'Segoe UI';
+    background-color: transparent;
+    border: none;
+    padding: 0 2px;
+    min-width: 26px;
+    min-height: 26px;
+    color: #fff;
+}
+
+.wifi-menu .footer .refresh-icon {
+    font-family: 'Segoe Fluent Icons';
+    background-color: transparent;
+    border: none;
+    min-width: 26px;
+    min-height: 26px;
+    color: #fff;
+}
+
+.wifi-menu .footer .refresh-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.battery-widget {}
+.battery-widget .widget-container {}
+.battery-widget .widget-container .label {}
+.battery-widget .widget-container .label.alt {}
+.battery-widget .widget-container .icon {}
+/* Status classes */
+.battery-widget .widget-container .label.status-critical {}
+.battery-widget .widget-container .label.status-low {}
+.battery-widget .widget-container .label.status-medium {}
+.battery-widget .widget-container .label.status-high {}
+.battery-widget .widget-container .label.status-full {}
+.battery-widget .widget-container .label.status-charging {}
+.battery-widget .widget-container .icon.status-critical {}
+.battery-widget .widget-container .icon.status-low {}
+.battery-widget .widget-container .icon.status-medium {}
+.battery-widget .widget-container .icon.status-high {}
+.battery-widget .widget-container .icon.status-full {}
+.battery-widget .widget-container .icon.status-charging {}
+.battery-widget .widget-container .icon.status-charging.blink {}
+/* Progress bar styles */
+.battery-widget .progress-container {}
+
+.battery-widget {
+    padding: 0 8px;
+}
+.battery-widget .label {
+    font-size: 13px;
+    color: #e0e0e0;
+}
+.battery-widget .icon {
+    font-size: 14px;
+    margin-right: 6px;
+}
+/* Critical - red */
+.battery-widget .icon.status-critical {
+    color: #ff4444;
+}
+.battery-widget .label.status-critical {
+    color: #ff6b6b;
+}
+/* Low - orange */
+.battery-widget .icon.status-low {
+    color: #ff9800;
+}
+.battery-widget .label.status-low {
+    color: #ffb74d;
+}
+/* Medium - yellow */
+.battery-widget .icon.status-medium {
+    color: #ffc107;
+}
+/* High - light green */
+.battery-widget .icon.status-high {
+    color: #8bc34a;
+}
+/* Full - green */
+.battery-widget .icon.status-full {
+    color: #4caf50;
+}
+/* Charging - cyan */
+.battery-widget .icon.status-charging {
+    color: #00bcd4;
+}
+.battery-widget .label.status-charging {
+    color: #4dd0e1;
+}
+
+.audio-visualizer-widget {
+    padding: 0;
+    margin: 0;
+}
+.audio-visualizer-widget .widget-container {
+    padding: 0;
+    margin: 0;
+}
+.audio-visualizer-widget .audio-visualizer-canvas {
+    -qproperty-fillbrush: linear-gradient(to top, #8A9AFF, #8A8AFF, #C38AFF);
+}
+
+.wallpapers-widget {
+    padding: 0 6px 0 6px;
+}
+.wallpapers-widget .widget-container {}
+.wallpapers-widget .widget-container .label {}
+.wallpapers-widget .widget-container .icon {
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "Segoe Fluent Icons"
+}
+
+.window-switcher-widget {}
+.window-switcher-widget .label {}
+.window-switcher-widget .icon {
+    font-family: "JetBrainsMono NFP"
+}
+
+/* Styling for the popup container */
+.window-switcher-popup {
+    background-color: rgba(18, 19, 20, 0.4);
+    padding: 10px;
+}
+/* Styling for each window item */
+.window-switcher-popup .item {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 8px;
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+    border: 1px solid transparent
+}
+/* Hover or keyboard-focus effect */
+.window-switcher-popup .item:hover,
+.window-switcher-popup .item.active {
+    background-color: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+/* Window title text styling */
+.window-switcher-popup .title {
+    padding: 10px 10px 5px 10px;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.158);
+}
+
+
+.window-controls-widget {}
+.window-controls-widget.your_class {} /* If you are using class_name option */
+.window-controls-widget .widget-container {}
+.window-controls-widget .app-name {}
+.window-controls-widget .btn {}
+.window-controls-widget .btn.minimize {}
+.window-controls-widget .btn.maximize {}
+.window-controls-widget .btn.restore {}
+.window-controls-widget .btn.close {}
+
+.window-controls-widget {
+    padding: 0;
+    margin: 0;
+}
+.window-controls-widget .btn {
+    font-family: "JetBrainsMono NFP";
+    font-size: 18px;
+    min-width: 18px;
+    min-height: 18px;
+    margin: 0;
+    background-color: transparent;
+    border: none;
+}
+.window-controls-widget .btn.minimize {
+    color: #FFBD2E;
+}
+.window-controls-widget .btn.minimize:hover {
+    color: #ffc853;
+}
+.window-controls-widget .btn.maximize {
+    color: #28C840;
+}
+.window-controls-widget .btn.maximize:hover {
+    color: #60ff78;
+}
+.window-controls-widget .btn.restore {
+    color: #28C840;
+}
+.window-controls-widget .btn.restore:hover {
+    color: #60ff78;
+}
+.window-controls-widget .btn.close {
+    color: #FF5F57;
+}
+.window-controls-widget .btn.close:hover {
+    color: #ff8a84;
+}
+.window-controls-widget .app-name {
+    font-family: "Segoe UI";
+    font-size: 12px;
+    padding-left: 4px;  
+    font-weight: 600;    
+}
+
+.taskbar-widget {} /* Main container for the taskbar widget */
+.taskbar-widget .widget-container {} /* Container for the widget */
+/* Application containers */
+.taskbar-widget .app-container {} /* container for each app */
+.taskbar-widget .app-container.foreground {} /* container for the focused app */
+.taskbar-widget .app-container.flashing {} /* flashing container for the app (window is flashing) */
+.taskbar-widget .app-container.running {} /* container for running apps (not focused) */
+.taskbar-widget .app-container.running.minimized {} /* container for apps whose windows are all minimized */
+.taskbar-widget .app-container.grouped {} /* container holding more than one window of the same app */
+.taskbar-widget .app-container .app-icon {} /* Icon inside the container */
+.taskbar-widget .app-container .app-title {} /* Label inside the container */
+.taskbar-widget .app-container .app-count {} /* Window counter, only shown on grouped containers */
+/* Taskbar preview popup is very limited in styling options, do not use margins/paddings here */
+.taskbar-preview {}
+.taskbar-preview .preview-item {} /* One window inside the preview: header, thumbnail and the padding around them */
+.taskbar-preview .preview-item:hover {} /* Hovered window of a grouped preview */
+.taskbar-preview .header {}
+.taskbar-preview .header .title {}
+.taskbar-preview .close-button {} /* Close button on the preview */
+
+.taskbar-widget .app-container {
+    margin: 0 2px;
+    border-radius: 4px;
+    padding: 0 8px;
+    border: 1px solid transparent
+}
+.taskbar-widget .app-container.foreground {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.taskbar-widget .app-container.running {
+    background-color: transparent;
+}
+.taskbar-widget .app-container.running.minimized {
+    opacity: 0.5;
+}
+.taskbar-widget .app-container:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+.taskbar-widget .app-container .app-title {
+    padding-left: 4px; 
+    font-size: 12px;
+}
+.taskbar-widget .app-container .app-count {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 0 4px;
+    margin-left: 4px;
+    margin-right: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    font-size: 12px;
+}
+.taskbar-widget .app-container.grouped {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding-right: 0;
+}
+/* Flashing always needs to go last so it doesn't get overwritten. */
+.taskbar-widget .app-container.flashing {
+    background-color: rgba(241, 127, 127, 0.45);
+}
+.taskbar-widget .app-container.flashing .app-count {
+    background-color: rgba(241, 127, 127, 0.3);
+}
+
+/* The taskbar preview is really limited on styling options, so don't use margins or paddings here. Use the config for that instead. */
+.taskbar-preview {
+    border-radius: 8px;
+    background-color: rgba(38, 38, 38, 0.8); 
+}
+.taskbar-preview .preview-item {
+    background-color: rgba(38, 38, 38, 0.01); 
+}
+.taskbar-preview .preview-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+.taskbar-preview .preview-item.flashing { 
+    background-color: rgba(241, 127, 127, 0.45);
+}
+.taskbar-preview .header {
+    padding-bottom: 8px;
+    padding-top: 0;
+}
+.taskbar-preview .preview-item .header .title {
+    color: #d6d6d6;
+    font-family: "Segoe UI";
+    font-weight: 600;
+    font-size: 13px;
+}
+.taskbar-preview .preview-item .close-button {
+    font-size: 10px;
+    min-width: 24px;
+    min-height: 24px;
+    border-radius: 4px;
+    color: #eee;
+    background-color: transparent;
+    font-family: "Segoe Fluent Icons";
+}
+.taskbar-preview .preview-item .close-button:hover {
+    color: #ffffff;
+    background-color: #c42b1c;
+}
+
+
+.active-window-widget {}
+.active-window-widget.your_class {} /* If you are using class_name option */
+.active-window-widget .widget-container {}
+.active-window-widget .widget-container .label {}
+.active-window-widget .widget-container .label.alt {}
+.active-window-widget .widget-container .icon {}
