@@ -160,6 +160,22 @@
     {
       "kind": "exe",
       "id": "alcove.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "rayburst.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "prism.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "Motrix.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "xdm-app.exe"
     }
   ],
   "floating_applications": [
@@ -251,6 +267,22 @@
     {
       "kind": "exe",
       "id": "alcove.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "rayburst.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "prism.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "Motrix.exe"
+    },
+    {
+      "kind": "exe",
+      "id": "xdm-app.exe"
     }
   ]
 }
