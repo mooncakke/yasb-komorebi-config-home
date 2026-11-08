@@ -41,11 +41,11 @@ bars:
     widgets:
       left:
       - "home"
+      - "quick_launch"
+      - "launchpad"
       - "komorebi_control"
       - "komorebi_workspaces"
       - "komorebi_active_layout"
-      - "quick_launch"
-      - "launchpad"
       - "apps"
       - "notes"
       - "todo"
@@ -103,15 +103,15 @@ widgets:
       round_corners_type: "normal"
       border_color: "System"
       alignment: "center"
+
   quick_launch:
     type: "yasb.quick_launch.QuickLaunchWidget"
     options:
       label: "<span>\ue721</span>"
       search_placeholder: "Search applications..."
-      max_results: 30
+      max_results: 50
       show_icons: true
-      icon_size: 16
-      compact_text: true
+      icon_size: 32
       providers:
         apps:
           enabled: true
@@ -120,6 +120,111 @@ widgets:
           show_recent: true
           max_recent: 5
           show_description: true
+        bookmarks:
+          enabled: true
+          prefix: "*"
+          priority: 1
+          browser: "all"
+          profile: "Default"
+        calculator:
+          enabled: true
+          prefix: "="
+          priority: 2
+        clipboard_history:
+          enabled: true
+          prefix: "cb"
+          priority: 3
+          max_items: 30
+        color:
+          enabled: true
+          prefix: "c:"
+          priority: 4
+        currency:
+          enabled: true
+          prefix: "$"
+          priority: 5
+        dev_tools:
+          enabled: true
+          prefix: "dev"
+          priority: 6
+        emoji:
+          enabled: true
+          prefix: ":"
+          priority: 7
+        file_search:
+          enabled: true
+          prefix: "/"
+          priority: 8
+          backend: "auto"
+          show_path: true
+        github_notifications:
+          enabled: true
+          prefix: "gh"
+          priority: 9
+          token: "env"
+        hacker_news:
+          enabled: true
+          prefix: "hn"
+          priority: 10
+          cache_ttl: 300
+          max_items: 30
+        ip_info:
+          enabled: true
+          prefix: "ip"
+          priority: 11
+        kill_process:
+          enabled: true
+          prefix: "!"
+          priority: 12
+        port_viewer:
+          enabled: true
+          prefix: "pv"
+          priority: 13
+          tcp_listening_only: true
+          include_established: false
+        settings:
+          enabled: true
+          prefix: "@"
+          priority: 14
+        snippets:
+          enabled: true
+          prefix: ";"
+          priority: 15
+          type_delay: 200
+        system_commands:
+          enabled: true
+          prefix: ">"
+          priority: 16
+        unit_converter:
+          enabled: true
+          prefix: "~"
+          priority: 17
+        vscode:
+          enabled: true
+          prefix: "vsc"
+          priority: 18
+        web_search:
+          enabled: true
+          prefix: "?"
+          priority: 19
+          engine: "google"
+        window_switcher:
+          enabled: true
+          prefix: "win"
+          priority: 20
+        windows_terminal:
+          enabled: true
+          prefix: "wt"
+          priority: 21
+        world_clock:
+          enabled: true
+          prefix: "tz"
+          priority: 22
+        wsl:
+          enabled: true
+          prefix: "wsl"
+          priority: 23
+          show_online: true
       popup:
         width: 720
         height: 480
@@ -185,20 +290,23 @@ widgets:
         on_right: "context_menu"
 
   systray:
-    type: yasb.systray.SystrayWidget
+    type: "yasb.systray.SystrayWidget"
     options:
-      class_name: systray
-      label_collapsed: "\ue70d"
-      label_expanded: "\ue70e"
-      label_position: right
-      pin_click_modifier: ctrl
-      show_unpinned: false
-      show_battery: false
-      show_volume: false 
+      class_name: "systray"
+      label_collapsed: "▼"
+      label_expanded: "▶"
+      label_position: "right"
       icon_size: 16
-      use_hook: true
+      pin_click_modifier: "alt"
       show_in_popup: true
-      icons_per_row: 5
+      icons_per_row: 4
+      show_unpinned: true
+      show_unpinned_button: true
+      show_battery: false
+      show_volume: false
+      show_network: false
+      use_hook: true # Whether to use the new systray hook instead of the legacy systray monitor
+      hide_icons: [] # Optional, list of process names to hide (e.g. ["discord"])
       popup:
         blur: true
         round_corners: true
@@ -282,15 +390,15 @@ widgets:
   volume:
     type: "yasb.volume.VolumeWidget"
     options:
-      label: "<span>{icon}</span>"
-      label_alt: "<span>{icon}</span>{level}"
+      label: "<span>{icon}</span> {level}"
+      label_alt: "{level}"
       tooltip: true
-      volume_icons:
-        - "\ue74f"
-        - "\ue992"
-        - "\ue993"
-        - "\ue994"
-        - "\ue995"
+      icons:
+        "muted": "\ue74f" # Icon for muted
+        "10": "\ue992"  # Icon for 0-10% volume
+        "30": "\ue993"  # Icon for 11-30% volume
+        "60": "\ue994"  # Icon for 31-60% volume
+        "100": "\ue995" # Icon for 61-100% volume
       audio_menu:
        blur: True
        round_corners: True
@@ -310,6 +418,16 @@ widgets:
       callbacks:
         on_left: "toggle_volume_menu"
         on_right: "toggle_mute"
+      progress_bar:
+        enabled: false
+        progress_type: "circular"
+        size: 18
+        thickness: 3
+        radius: 0
+        color: "#00C800"
+        background_color: "#3C3C3C"
+        position: "left"
+        animation: true
       
   cpu:
     type: "yasb.cpu.CpuWidget"
@@ -317,30 +435,102 @@ widgets:
       label: "<span>\ueea1</span> {info[percent][total]}%"
       label_alt: "<span>\ueea1</span> {info[freq][current]} MHz"
       update_interval: 2000
+      cpu_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      histogram_icons:
+        - "\u2581" # 0%
+        - "\u2581" # 10%
+        - "\u2582" # 20%
+        - "\u2583" # 30%
+        - "\u2584" # 40%
+        - "\u2585" # 50%
+        - "\u2586" # 60%
+        - "\u2587" # 70%
+        - "\u2588" # 80%+
+      histogram_num_columns: 8
       menu:
         enabled: true
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        graph_history_size: 60
         show_graph: true
         show_graph_grid: true
-        graph_history_size: 60
+        pin_icon: "\ue718"
+        unpin_icon: "\ue77a"
       callbacks:
-        on_left: toggle_menu
-        on_middle: do_nothing
-        on_right: toggle_label
+          on_left: toggle_menu
+          on_middle: do_nothing
+          on_right: toggle_label
+      progress_bar:
+          enabled: false
+          progress_type: "circular"
+          size: 18
+          thickness: 3
+          radius: 0
+          color: "#00C800"
+          background_color: "#3C3C3C"
+          position: "left"
+          animation: true
+  
   memory:
     type: "yasb.memory.MemoryWidget"
     options:
-      label: "<span>\ueea1</span> {virtual_mem_free}"
+      label: "<span>\ueea1</span> {virtual_mem_free}/{virtual_mem_total}"
       label_alt: "<span>\ueea1</span> VIRT: {virtual_mem_percent}% SWAP: {swap_mem_percent}%"
       update_interval: 5000
       callbacks:
         on_left: "toggle_menu"
         on_middle: "do_nothing"
         on_right: "toggle_label"
+      memory_thresholds:
+        low: 25
+        medium: 50
+        high: 90
+      histogram_icons:
+        - "\u2581" # 0%
+        - "\u2581" # 10%
+        - "\u2582" # 20%
+        - "\u2583" # 30%
+        - "\u2584" # 40%
+        - "\u2585" # 50%
+        - "\u2586" # 60%
+        - "\u2587" # 70%
+        - "\u2588" # 80%+
       menu:
         enabled: true
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        graph_history_size: 60
         show_graph: true
         show_graph_grid: true
-        graph_history_size: 60
+        pin_icon: "\ue718"
+        unpin_icon: "\ue77a"
+      progress_bar:
+        enabled: false
+        progress_type: "circular"
+        size: 18
+        thickness: 3
+        radius: 0
+        color: "#00C800"
+        background_color: "#3C3C3C"
+        position: "left"
+        animation: true
+  
+
   power_menu:
     type: "yasb.power_menu.PowerMenuWidget"
     options:
@@ -363,14 +553,40 @@ widgets:
   notifications:
     type: "yasb.notifications.NotificationsWidget"
     options:
-      label: "<span>\uf2a3</span>"
+      label: "<span>\uf2a3</span> {count}"
       label_alt: "{count} notifications"
       hide_empty: true
       tooltip: false
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        app_icon_size: 16
       callbacks:
-        on_left: "toggle_notification"
-        on_right: "do_nothing"
-        on_middle: "do_nothing"
+        on_left: "toggle_menu"
+        on_right: "toggle_notification"
+        on_middle: "toggle_label"
+      menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        app_icon_size: 16
+      icons:
+        new: "\udb80\udc9e"
+        default: "\udb80\udc9a"
+        dnd_on: "\udb80\udc9b"
+        dnd_off: "\udb80\udc9a"
+        dismiss: "\uf00d"
 
   gpu:
     type: "yasb.gpu.GpuWidget"
@@ -399,9 +615,29 @@ widgets:
         on_right: "toggle_label"
       menu:
         enabled: true
+        blur: true
+        round_corners: true
+        round_corners_type: "normal"
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
+        offset_top: 6
+        offset_left: 0
+        graph_history_size: 60
         show_graph: true
         show_graph_grid: true
-        graph_history_size: 60
+        pin_icon: "\ue718"
+        unpin_icon: "\ue77a"
+      progress_bar:
+        enabled: false
+        progress_type: "circular"
+        size: 18
+        thickness: 3
+        radius: 0
+        color: "#00C800"
+        background_color: "#3C3C3C"
+        position: "left"
+        animation: true
 
   notes:
     type: "yasb.notes.NotesWidget"
@@ -469,13 +705,23 @@ widgets:
         circle_size: 160
       callbacks:
         on_left: "toggle_menu"
-        on_middle: "reset_timer"
-        on_right: "toggle_label"
+        on_middle: "toggle_timer"
+        on_right: "reset_timer"
       label_shadow:
         enabled: true
         color: "black"
         radius: 3
-        offset: [ 1, 1 ]      
+        offset: [ 1, 1 ]
+      progress_bar:
+        enabled: false
+        progress_type: "circular"
+        size: 18
+        thickness: 3
+        radius: 0
+        color: "#00C800"
+        background_color: "#3C3C3C"
+        position: "left"
+        animation: true
 
   todo:
     type: "yasb.todo.TodoWidget"
@@ -585,9 +831,15 @@ widgets:
         blur: true
         round_corners: true
         round_corners_type: "small"
-        alignment: 'center'
+        border_color: "System"
+        alignment: "right"
+        direction: "down"
         offset_top: 6
         offset_left: 0
+      callbacks:
+        on_left: "toggle_menu"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
 
   media:
     type: "yasb.media.MediaWidget"
@@ -821,7 +1073,7 @@ widgets:
   bin:
     type: "yasb.recycle_bin.RecycleBinWidget"
     options:
-      label: "<span>{icon}</span> Items {items_count} ({items_size})"
+      label: "<span>{icon}</span> . {items_count}"
       label_alt: "Items {items_count}, Total size ({items_size})"
       icons:
         bin_empty: "\udb82\ude7a"
@@ -950,6 +1202,7 @@ widgets:
       window_animation:
         fade_in_duration: 200
         fade_out_duration: 200
+      group_apps: false
       callbacks:
         on_left: "toggle_launchpad"
       app_title_shadow:
@@ -1314,6 +1567,7 @@ widgets:
   audio_visualizer:
     type: "yasb.audio_visualizer.AudioVisualizerWidget"
     options:
+      source: "auto"
       style: bars
       height: 16
       smoothness: 80
@@ -1375,9 +1629,12 @@ widgets:
     type: "yasb.window_switcher.WindowSwitcherWidget"
     options:
       label: "<span>\uf2d2</span>"
-      icon_size: 48
+      icon_size: 64
       max_visible_apps: 6
       show_title: true
+      preview:
+        enabled: false
+        width: 240
       keybindings:
         - keys: "alt+w"
           action: "toggle_window_switcher"
@@ -1429,6 +1686,10 @@ widgets:
         processes: []
         titles: []
         classes: []
+      callbacks:
+        on_left: "toggle_window"
+        on_middle: "do_nothing"
+        on_right: "context_menu"
 
   active_window:
     type: "yasb.active_window.ActiveWindowWidget"
